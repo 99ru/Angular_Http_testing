@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+      <h1>Create Post</h1>
+      <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" required ngModel name="title" />
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea class="form-control" id="content" required ngModel name="content"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
+          Send Post
+        </button>
+      </form>
+
+      <hr>
+
+      <!-- Create User -->
+      <h1>Create User Form</h1>
+      <form #userForm="ngForm" (ngSubmit)="createNewUser(userForm.value)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" required ngModel name="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" required ngModel name="email" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" required ngModel name="password" />
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid"> Create User </button>
+      </form>
+
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <button class="btn btn-primary" (click)="onFetchPosts()">
+        Fetch Posts
+      </button>
+      |
+      <button class="btn btn-danger" [disabled]="loadedPosts.length < 1" (click)="onClearPosts()">
+        Clear Posts
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <p>No posts available!</p>
+    </div>
+  </div>
+</div>
